@@ -1,0 +1,52 @@
+{% load static %}
+<!-- Loader -->
+<div id="page-loader" class="bg-white"></div>
+<!-- Loader / End -->
+
+<!-- Header -->
+<header id="header" class="bg-white hidden-sm hidden-xs">
+
+    <!-- Photo -->
+    <div class="photo">
+        <img src="{% static 'img/photos/it-avatar.jpg' %}" alt="...">
+    </div>
+
+    <!-- Navigation -->
+    <nav id="main-menu">
+        <ul class="nav nav-vertical">
+            <li><a href="#start"><span>Start</span></a></li>
+            <li><a href="#resume"><span>Resume</span></a></li>
+            <li><a href="#portfolio"><span>Portfolio</span></a></li>
+            <li><a href="#testimonials"><span>Testimonials</span></a></li>
+            <li class="dropdown">
+                <a href="#posts"><span>Latest Posts</span></a>
+                <ul>
+                    <li><a href="{% url 'blog' %}">All Posts</a></li>
+                </ul>
+            </li>
+            <li><a href="#" data-target="messenger"><span>Contact Me</span></a></li>
+        </ul>
+    </nav>
+
+    <!-- Social Media -->
+    <div class="social-media">
+        <!-- Contact List -->
+        <ul class="list-unstyled list-unstyled-icons">
+                <li>1111-A Nowhere Lane,<br />Outta Sight,<br />State 90378, USA</li>
+                <li><a href="#">johnathandoe@suelo.pl</a></li>
+                <li>+0(31)6 89764536</li>
+        </ul>
+        <strong class="text-sm">Check my social media!</strong>
+        <ul class="list-inline margin-t-10">
+            <li><a href="#" class="icon icon-xs"><i class="fa fa-facebook text-muted"></i></a></li>
+            <li><a href="#" class="icon icon-xs"><i class="fa fa-twitter text-muted"></i></a></li>
+            <li><a href="#" class="icon icon-xs"><i class="fa fa-google-plus text-muted"></i></a></li>
+        </ul>
+        <h5>Like me on Facebook</h5>
+        <!-- FB Like -->
+        <div class="fb-like" data-href="http://www.facebook.com/suelopl" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
+        <hr>
+    </div>
+
+</header>
+<!-- Header / End -->

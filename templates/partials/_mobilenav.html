@@ -1,0 +1,46 @@
+{% load static %}
+<!-- Mobile Navigation -->
+<a href="#" id="mobile-nav-toggle" class="icon icon-circle icon-sm icon-primary icon-hover visible-xs visible-sm" data-target="mobile-nav">
+        <i class="ti-menu"></i>
+</a>
+<nav id="mobile-nav" class="bg-white">
+    <div class="mobile-nav-wrapper">
+        <!-- Avatar -->
+        <img src="{% static 'img/photos/it-avatar-96x96.jpg' %}" alt="..." class="img-circle margin-b-30">
+        <!-- Nav -->
+        <ul class="nav nav-vertical">
+            <li><a href="#start"><span>Start</span></a></li>
+            <li><a href="#resume"><span>Resume</span></a></li>
+            <li><a href="#portfolio"><span>Portfolio</span></a></li>
+            <li><a href="#testimonials"><span>Testimonials</span></a></li>
+            <li class="dropdown">
+                <a href="#posts"><span>Latest Posts</span></a>
+                <ul>
+                    <li><a href="{% url 'blog' %}">All Posts</a></li>
+                </ul>
+            </li>
+            <li><a href="#" data-target="messenger"><span>Contact Me</span></a></li>
+        </ul>
+        <!-- Social Media -->
+        <div class="social-media">
+            <!-- Contact List -->
+            <ul class="list-unstyled list-unstyled-icons">
+                    <li>7 Bond Street,<br />Colorado Park, Mitchell’s Plain,<br /> Cape Town, South Africa</li>
+                    <li><a href="#">muyambojohn1@gmail.com</a></li>
+                    <li>+(27)79 262 0171</li>
+            </ul>
+            <strong class="text-sm">Check my social media!</strong>
+            <ul class="list-inline margin-t-10">
+                <li><a href="https://web.facebook.com/johndevlox/" class="icon icon-xs"><i class="fa fa-facebook text-muted"></i></a></li>
+                <li><a href="https://twitter.com/devloxweb" class="icon icon-xs"><i class="fa fa-twitter text-muted"></i></a></li>
+                <li><a href="https://www.linkedin.com/in/john-muyambo-86a6aa138/" class="icon icon-xs"><i class="fa fa-linkedin text-muted"></i></a></li>
+                <li><a href="https://github.com/Devlox" class="icon icon-xs"><i class="fa fa-github text-muted"></i></a></li>
+            </ul>
+            <h5>Like me on Facebook</h5>
+            <!-- FB Like -->
+            <div class="fb-like" data-href="https://web.facebook.com/johndevlox" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
+            <hr>
+        </div>
+    </div>
+    <a href="#" class="mobile-nav-close icon icon-hover icon-xs icon-circle icon-primary" data-target="mobile-nav"><i class="fa fa-times"></i></a>
+</nav>

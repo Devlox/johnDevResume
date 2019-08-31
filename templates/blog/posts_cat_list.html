@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %} Infomation Technology - Web Developer News {% endblock %}
+
+{% block content %}
+<!-- Main Navigation & Loader -->
+{% include 'partials/_headerNavBlog.html' %}
+
+<!-- Mobile Navigation -->
+{% include 'partials/_mobilenavBlog.html' %}
+
+<!-- Content -->
+<div id="content" class="bg-grey">
+
+    <!-- Section - Latest Posts -->
+    <section id="posts" class="section bg-grey padding-v-60">
+
+        <!-- Content -->
+        <div class="container container-wide">
+
+            <nav class="text-center margin-b-20">
+                    <a href="javascript: history.go(-1)" class="icon icon-circle icon-hover icon-sm icon-primary"><i class="ti-arrow-left"></i></a>
+                    <a href="{% url 'blog' %}" class="icon icon-circle icon-hover icon-sm icon-secondary"><i class="ti-list"></i></a>
+            </nav>
+
+            <h6 class="margin-b-50">Posts About {{category.title}}</h6>
+            <div class="row masonry">
+                <!-- Masonry Sizer -->
+                <div class="masonry-sizer col-lg-4 col-sm-6 col-xs-12"></div>    
+                <!-- Masonry Element / Post  -->
+                {% for post_item in post %}
+                <article class="post post-item masonry-item col-lg-4 col-sm-6 col-xs-12">
+                    {% if post_item.featured %}
+                    {% else %}
+                    <div class="post-photo">
+                        <img src="{{ post_item.thumbnail.url }}" alt="...">
+                    </div>
+                    {% endif %}
+                    <div class="post-content animated" data-animation="fadeInUp">
+                        <div class="meta">
+                            <span><i class="fa fa-comment"></i><a href="{% url 'post' post_item.slug %}#disqus_thread"></a></span>
+                            <span><i class="fa fa-user"></i><a href="{% url 'index' %}#start">{{ post_item.author }}</a></span>
+                            <span><i class="fa fa-tag"></i>
+                                {% for cat in post_item.categories.all %}
+                                <a href="{% url 'category' category.cat_slug %}">{{ cat }}</a>
+                                {% endfor %}
+                            </span>
+                        </div>
+                        <div class="date">{{ post_item.timestamp|timesince }} ago</div>
+                        <h1><a href="#">{{ post_item.title }}</a></h1>
+                        <p class="lead">{{ post_item.title_def }}</p>
+                        <p> {{ post_item.overview|truncatewords:25 }} </p>
+                        <a href="{% url 'post' post_item.slug %}" class="btn btn-primary btn-xs"><span>Read more</span><i class="ti-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                {% endfor %}
+            </div> 
+
+            <!-- Pagination -->
+
+        </div>
+        
+    </section>
+    <!-- Section - Latest Posts / End -->
+    <footer id="footer" class="bg-blue-dark padding-v-40 dark text-center">
+        <div class="section-content copyright margin-b-20">
+            Copyright <strong>JohnDev.</strong> 2019©. Made with passion by <a href="#"><strong>JohnDev</strong></a>
+        </div>
+        <span data-target="local-scroll"><a href="#start" class="back-to-top"><i class="fa fa-chevron-up"></i></a></span>
+    </footer>
+    <!-- Footer / End -->
+</div>
+<!-- Content / End -->
+
+{% endblock %}

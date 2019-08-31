@@ -356,7 +356,7 @@ var Mi = {
                 if ($contactForm.valid()){
                     $.ajax({
                         type: "POST",
-                        url: "assets/php/contact-form.php",
+                        url: "/contact",
                         data: $(this).serialize(),
                         success: function(msg) {
                             if (msg === 'SEND') {

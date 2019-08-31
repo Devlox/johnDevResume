@@ -1,0 +1,176 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %} {{ post_details.title }} - JohnDev {% endblock %}
+
+{% block content %}
+<!-- Main Navigation & Loader -->
+{% include 'partials/_headerNavBlog.html' %}
+
+<!-- Mobile Navigation -->
+{% include 'partials/_mobilenavBlog.html' %}
+
+
+<!-- Content -->
+<div id="content" class="bg-grey">
+
+    <!-- Section - Post -->
+    <section id="post" class="section bg-grey padding-t-20 padding-b-60">
+
+        <!-- Content -->
+        <div class="container container-wide">
+    
+            <nav class="text-center margin-b-20">
+                <a href="javascript: history.go(-1)" class="icon icon-circle icon-hover icon-sm icon-primary"><i class="ti-arrow-left"></i></a>
+                <a href="{% url 'blog' %}" class="icon icon-circle icon-hover icon-sm icon-secondary"><i class="ti-list"></i></a>
+            </nav>
+            
+            <div class="row"> 
+                <!-- Post -->
+                <article class="post col-lg-10 col-lg-push-1">
+                    <div class="post-photo">
+                        <img src="{{ post_details.thumbnail.url }}" alt="...">
+                    </div>
+                    <div class="post-content">
+                        <div class="meta">
+                            <span><i class="fa fa-comment"></i><a href="#disqus_thread">Comments</a></span>
+                            <span><i class="fa fa-user"></i><a href="{% url 'index' %}#start">{{ post_details.author }}</a></span>
+                            <span><i class="fa fa-tag"></i>
+                                {% for cat in post_details.categories.all %}
+                                    <a href="{% url 'category' cat.cat_slug %}">{{ cat }}</a>
+                                {% endfor %}
+                            </span>
+                        </div>
+                        <div class="date">{{ post_details.timestamp|timesince }} ago</div>
+                        <h1>{{ post_details.title }}</h1>
+                        <p class="lead">{{ post_details.title_def }}</p>
+                        <p>{{ post_details.overview }}</p>
+                        <blockquote>
+                            <p> Published By: {{ post_details.author }}</p>
+                            <footer><img src="{{ post_details.author.profile_picture.url }}" alt="..." class="circle circle-xs"><cite title="Source Title">The perfect IT engineer & Full Stack Web Developer</cite></footer>
+                        </blockquote>
+            
+                    </div>
+
+                    <div id="disqus_thread"></div>
+
+                    <script type="text/javascript">
+                        /* * * CONFIGURATION VARIABLES * * */
+                        var disqus_shortname = 'askalot-2';
+
+                        /* * * DON'T EDIT BELOW THIS LINE * * */
+                        (function() {
+                            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                        })();
+                    </script>
+                    <noscript>Please enable JavaScript to view and add the comments</noscript>
+
+                   <!-- <div class="row">
+                        <div class="col-sm-10 col-sm-push-1">
+                       Comments 
+                            <h4><strong>Comments</strong> ({{ post_details.comment_count }})</h4>
+                            <ul class="comments">
+                                <li class="single-comment">
+                                    <div class="comment-avatar"><img src="assets/img/photos/it-avatar-96x96.jpg" alt="" /></div>
+                                    <div class="comment-content">
+                                        <div class="comment-head">
+                                            <h5 class="comment-title">Really awesome template!</h5>
+                                            <span class="text-xs"><span class="text-muted">Added</span> 5 days ago <span class="text-muted">by</span> <a href="#">Michael Kors</a></span>
+                                        </div>
+                                        <div class="comment-text font-alt">
+                                            In ut risus at risus ultricies sodales. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vestibulum porttitor congue accumsan. Cum sociis natoque penatibus et magnis dis parturient montes 
+                                        </div>
+                                        <a href="#" class="btn btn-xs btn-primary"><span>Write a reply</span><i class="ti-comment"></i></a>
+                                    </div>
+                                    <ul class="comments">
+                                        <li class="single-comment">
+                                            <div class="comment-avatar"><img src="assets/img/photos/beauty-avatar-96x96.jpg" alt="" /></div>
+                                            <div class="comment-content">
+                                                <div class="comment-head">
+                                                    <h5 class="comment-title">Yes, you are right!</h5>
+                                                    <span class="text-xs"><span class="text-muted">Added</span> 5 days ago <span class="text-muted">by</span> <a href="#">Michael Kors</a></span>
+                                                </div>
+                                                <div class="comment-text font-alt">
+                                                   Vestibulum porttitor congue accumsan. Cum sociis natoque penatibus et magnis dis parturient montes 
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="single-comment">
+                                            <div class="comment-avatar"><img src="assets/img/avatar-default.jpg" alt="" /></div>
+                                            <div class="comment-content">
+                                                <div class="comment-head">
+                                                    <h5 class="comment-title">Yep!</h5>
+                                                    <span class="text-xs"><span class="text-muted">Added</span> 5 days ago <span class="text-muted">by</span> <a href="#">Michael Kors</a></span>
+                                                </div>
+                                                <div class="comment-text font-alt">
+                                                    Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vestibulum porttitor congue accumsan. Cum sociis natoque penatibus et magnis dis parturient montes 
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="single-comment">
+                                    <div class="comment-avatar"><img src="assets/img/photos/manager-avatar-96x96.jpg" alt="" /></div>
+                                    <div class="comment-content">
+                                        <div class="comment-head">
+                                            <h5 class="comment-title">Lots of good wishes!</h5>
+                                            <span class="text-xs"><span class="text-muted">Added</span> 5 days ago <span class="text-muted">by</span> <a href="#">Michael Kors</a></span>
+                                        </div>
+                                        <div class="comment-text font-alt">
+                                            In ut risus at risus ultricies sodales. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vestibulum porttitor congue accumsan. Cum sociis natoque penatibus et magnis dis parturient montes 
+                                        </div>
+                                        <a href="#" class="btn btn-xs btn-primary"><span>Write a reply</span><i class="ti-comment"></i></a>
+                                    </div>
+                                </li>
+                                <li class="single-comment">
+                                    <div class="comment-avatar"><img src="assets/img/photos/eco-avatar-96x96.jpg" alt="" /></div>
+                                    <div class="comment-content">
+                                        <div class="comment-head">
+                                            <h5 class="comment-title">Really awesome template!</h5>
+                                            <span class="text-xs"><span class="text-muted">Added</span> 5 days ago <span class="text-muted">by</span> <a href="#">Michael Kors</a></span>
+                                        </div>
+                                        <div class="comment-text font-alt">
+                                            In ut risus at risus ultricies sodales.  Vestibulum porttitor congue accumsan. Cum sociis natoque penatibus et magnis dis parturient montes 
+                                        </div>
+                                        <a href="#" class="btn btn-xs btn-primary"><span>Write a reply</span><i class="ti-comment"></i></a>
+                                    </div>
+                                </li>
+                            </ul>
+                            <!-- Write a comment 
+                            <h4><strong>Write</strong> a comment</h4>
+                            <form class="margin-bottom-40 text-center">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="commentName" name="name" placeholder="Name">
+                                </div>
+                                <div class="form-group">
+                                    <textarea class="form-control" id="comment" name="message" rows="3"  placeholder="Message"></textarea>
+                                </div>
+                                <div class="form-group clearfix">
+                                    <button type="submit" class="btn btn-primary"><span>Send it!</span><i class="ti-arrow-right"></i></button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                -->
+
+
+                </article>
+            </div>  
+
+        </div>
+        
+    </section>
+    <!-- Section - Latest Posts / End -->
+    <footer id="footer" class="bg-blue-dark padding-v-40 dark text-center">
+        <div class="section-content copyright margin-b-20">
+            Copyright <strong>JohnDev.</strong> 2019©. Made with passion by <a href="#"><strong>JohnDev</strong></a>
+        </div>
+        <span data-target="local-scroll"><a href="#start" class="back-to-top"><i class="fa fa-chevron-up"></i></a></span>
+    </footer>
+    <!-- Footer / End -->
+</div>
+<!-- Content / End -->
+{% endblock %}
